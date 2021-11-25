@@ -1,10 +1,11 @@
-#이게 무슨 일이지 왜 git이 안 되지?
+#이게 무슨 일이지 왜 git이 안 돼
+
 import googlemaps
 import pandas as pd
-df_list = pd.read_csv(filename+'.csv',encoding='utf-8')
+df_list = pd.read_csv(filename + '.csv',encoding='utf-8')
 
 gmaps_key = "AlzaSyBb-qcA00eiqk_9JZZkcQUhVcgG_5Xw"
-gmaps  = googlemaps.Client(key=gmaps_key)
+#gmaps  = googlemaps.Client(key=gmaps_key)
 
 place_lat = []
 place_lng = []
