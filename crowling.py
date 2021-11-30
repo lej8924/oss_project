@@ -22,20 +22,22 @@ options.add_argument('lang=ko_KR')
 
 chromedriver_path = "chromedriver.exe"
 
-driver = webdriver.Chrome()
-#os.path.join(os.getwd(),chromedriver_path),options=options
+driver = webdriver.Chrome(executable_path='/Users/yu/Desktop/oss_project-master/chromedriver')   #os.path.join(os.getwd(),chromedriver_path),options=options
 driver.get(url)
 
+#검색할 키워드 및 저장할파일명 입력
 searchloc = input("찾고싶은 음식=> ")
 filename = input("파일이름(영어로 치기)=> ")
 
+#검색창에 키워드 입력
 search_area = driver.find_element_by_xpath('//*[@id="search.keyword.query"]')
 search_area.send_keys(searchloc)
 driver.find_element_by_xpath('//*[@id="search.keyword.submit"]').send_keys(Keys.ENTER)
+time.sleep(2) #로딩시간 2초대기
 
-time.sleep(2)
-
+#더보기 클릭
 driver.find_element_by_xpath('//*[@id="info.main.options"]/li[2]/a').send_keys(Keys.ENTER)
+time.sleep(2)
 
 def storeNamePrint():
     time.sleep(0.2)
@@ -79,7 +81,7 @@ def storeNamePrint():
 page = 1
 page2 = 0
 
-for i in range(0,34):
+for i in range(0,10):
     
     try:
         page2+=1
@@ -87,10 +89,12 @@ for i in range(0,34):
         print("**",page,"**")
         
         driver.find_element_by_xpath(f'//*[@id="info.search.page.no{page2}"]').send_keys(Keys.ENTER)
+        time.sleep(2)
         storeNamePrint()
         
         if(page2)%5==0:
             driver.find_element_by_xpath('//*[@id="info.search.page.next"]').send_keys(Keys.ENTER)
+            time.sleep(2)
             
             page2 = 0
         page += 1
