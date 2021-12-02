@@ -3,22 +3,14 @@ import pandas as pd
 import glob
 
 #csv 파일 합치기
-<<<<<<< Updated upstream
-filenames = glob.glob('/Users/yu/Desktop/oss_project-master/*.csv')
-
-=======
 filenames = glob.glob('/Users/yu/Desktop/oss_project-master/data/*.csv')
 print(filenames)
->>>>>>> Stashed changes
 df_list = []
 for filename in filenames:
     df_list.append(pd.read_csv(filename,index_col=None, header=0))
 df_list = pd.concat(df_list, axis=0, ignore_index=True)
 
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 #gmaps 인증
 gmaps_key = "AIzaSyBWwCkmpNU-s28QzFyunENlPjgUcCxpekI"
 gmaps  = googlemaps.Client(key=gmaps_key)
@@ -68,5 +60,5 @@ df = pd.concat([df_list,df_list2,df_list3], axis=1)
 
 #csv파일로 출력
 df = df.query("lat != '0'")
-df.to_csv('/Users/yu/Desktop/oss_project-master/no1won_data_'+"location.csv",encoding="utf-8-sig")
+df.to_csv('/Users/yu/Desktop/oss_project-master/no1_data_'+"location.csv",encoding="utf-8-sig")
 df.tail()
