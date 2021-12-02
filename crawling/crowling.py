@@ -22,7 +22,7 @@ options.add_argument('lang=ko_KR')
 
 chromedriver_path = "chromedriver.exe"
 
-driver = webdriver.Chrome(executable_path='/Users/yu/Desktop/oss_project-master/chromedriver')   #os.path.join(os.getwd(),chromedriver_path),options=options
+driver = webdriver.Chrome(executable_path='/Users/yu/Desktop/oss_project-master/crawling/chromedriver')   #os.path.join(os.getwd(),chromedriver_path),options=options
 driver.get(url)
 
 #검색할 키워드 및 저장할파일명 입력
@@ -30,14 +30,14 @@ searchloc = input("찾고싶은 음식=> ")
 filename = input("파일이름(영어로 치기)=> ")
 
 #검색창에 키워드 입력
-search_area = driver.find_element_by_xpath('//*[@id="search.keyword.query"]')
-search_area.send_keys(searchloc)
-driver.find_element_by_xpath('//*[@id="search.keyword.submit"]').send_keys(Keys.ENTER)
+search_area = driver.find_element_by_xpath('//*[@id="search.keyword.query"]')#검색창
+search_area.send_keys(searchloc) #검색어 입력
+driver.find_element_by_xpath('//*[@id="search.keyword.submit"]').send_keys(Keys.ENTER) # Enter로 실행
 time.sleep(2) #로딩시간 2초대기
 
-#더보기 클릭
+#장소 버튼 클릭
 driver.find_element_by_xpath('//*[@id="info.main.options"]/li[2]/a').send_keys(Keys.ENTER)
-time.sleep(2)
+time.sleep(1)
 
 def storeNamePrint():
     time.sleep(0.2)
@@ -50,20 +50,27 @@ def storeNamePrint():
     for cafe in cafe_lists:
         temp = []
         cafe_name = cafe.select('.head_item > .tit_name > .link_name')[0].text
-        food_score = cafe.select('.rating > .score > .num')[0].text
+        star = cafe.select('.rating > .score > .num')[0].text
+        star_num = cafe.select('.rating > .score > .numberofscore')[0].text
         review = cafe.select('.rating > .review')[0].text
         link = cafe.select('.contact > .moreview')[0]['href']
         addr = cafe.select('.addr')[0].text
         
-        review = review[3:len(review)]
-        
+        #review에서 수동으로 글자제거
+        review = review[3:len(review)]        
         review = int(re.sub(",","",review))
+
+        #star_num에서 수동으로 마지막 한 글자제거
+        star_num_size = len(star_num)
+        star_num = star_num[:star_num_size-1]        
+        star_num = int(re.sub(",","",star_num))
         
         
-        print(cafe_name,food_score,review,link,addr)
+        print(cafe_name,star,star_num,review,link,addr)
         
         temp.append(cafe_name)
-        temp.append(food_score)
+        temp.append(star)
+        temp.append(star_num)
         temp.append(review)
         temp.append(link)
         temp.append(addr)
@@ -72,7 +79,7 @@ def storeNamePrint():
         
     f = open(filename + '.csv',"w",encoding="utf-8-sig",newline="")
     writercsv = csv.writer(f)
-    header = ['Name','Score','Review','Link','Addr']
+    header = ['Name','Score','Numberofscore','Review','Link','Addr']
     writercsv.writerow(header)
     
     for i in list:
