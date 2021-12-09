@@ -2,6 +2,7 @@ import time
 import os
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from webdriver_manager.chrome import ChromeDriverManager # install webdriver-manager 필요
 
 import requests
 import csv
@@ -22,7 +23,7 @@ options.add_argument('lang=ko_KR')
 
 chromedriver_path = "chromedriver.exe"
 
-driver = webdriver.Chrome(executable_path='/Users/yu/Desktop/oss_project-master/crawling/chromedriver')   #os.path.join(os.getwd(),chromedriver_path),options=options
+driver = webdriver.Chrome(ChromeDriverManager().install()) 
 driver.get(url)
 
 #검색할 키워드 및 저장할파일명 입력
@@ -55,6 +56,7 @@ def storeNamePrint():
         review = cafe.select('.rating > .review')[0].text
         link = cafe.select('.contact > .moreview')[0]['href']
         addr = cafe.select('.addr')[0].text
+        Typename = cafe.select('.head_item > .subcategory')[0].text
         
         #review에서 수동으로 글자제거
         review = review[3:len(review)]        
@@ -66,7 +68,7 @@ def storeNamePrint():
         star_num = int(re.sub(",","",star_num))
         
         
-        print(cafe_name,star,star_num,review,link,addr)
+        print(cafe_name,star,star_num,review,link,addr,Typename)
         
         temp.append(cafe_name)
         temp.append(star)
@@ -74,12 +76,13 @@ def storeNamePrint():
         temp.append(review)
         temp.append(link)
         temp.append(addr)
+        temp.append(Typename)
         
         list.append(temp)
         
     f = open(filename + '.csv',"w",encoding="utf-8-sig",newline="")
     writercsv = csv.writer(f)
-    header = ['Name','Score','Numberofscore','Review','Link','Addr']
+    header = ['Name','Score','Numberofscore','Review','Link','Addr','Typename']
     writercsv.writerow(header)
     
     for i in list:
