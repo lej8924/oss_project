@@ -43,5 +43,38 @@ async def menu(ctx):
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
     	await ctx.send("명령어를 찾지 못했습니다")
+	
+######버튼########
+@bot.command()
+async def 버튼(ctx):
+    await buttons.send(
+        content = "어느 지역의 맛집이 궁금하시나요~?",
+        channel = ctx.channel.id,
+        components = [
+            ActionRow(
+                Button(
+                    label = "하계동",
+                    style = ButtonType().Primary,
+                    custom_id = "region_hagye"
+                ),
+           
+                Button(
+                    label = "중계동",
+                    style = ButtonType().Primary,
+                    custom_id = "region_jungye"
+                ),
+            
+                Button(
+                    label = "상계동",
+                    style = ButtonType().Primary,
+                    custom_id = "region_sangye"
+                )
+            )
+        ]
+    )
+
+@buttons.click
+async def region_hagye(ctx):
+    await ctx.reply("하계동 맛집을 찾아드리겠습니다")
 
 bot.run('') #토큰
