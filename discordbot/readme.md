@@ -1,8 +1,8 @@
-# Project Title
+# Discord Bot-노원구 맛집 추천 봇
 
   
 
-One Paragraph of project description goes here
+Discord Bot API를 이용하여 노원구 내 맛집을 이용자에게 맞추어 추천해주는 봇을 개발함.
 
   
 
@@ -17,14 +17,15 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
   
-
-What things you need to install the software and how to install them
+"requirement.txt"에 작성되어 있음
 
   
 
 ```
 
-Give examples
+discord
+asyncio
+discord_buttons_plugin
 
 ```
 
@@ -109,8 +110,8 @@ Give an example
 ## Deployment
 
   
-
-Add additional notes about how to deploy this on a live system
+heroku에 배포함
+누구든지 discord bot을 사용할 수 있음
 
   
 
@@ -118,11 +119,11 @@ Add additional notes about how to deploy this on a live system
 
   
 
-*  [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+*  [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - heroku deployment
 
-*  [Maven](https://maven.apache.org/) - Dependency Management
+*  [Maven](https://maven.apache.org/) - discord api
 
-*  [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+*  [ROME](https://rometools.github.io/rome/) - discord bot 개발 사이트 참조
 
   
 
@@ -146,7 +147,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
   
 
-*  **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+*  **20102040 이은재** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+*  **18    김용욱**
 
   
 
