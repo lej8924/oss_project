@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 #시각화
-data1 = pd.read_csv('final.csv')
+data1 = pd.read_csv('data/final.csv')
 data1 = data1.drop('Unnamed: 0',axis=1)
 
 star = data1['Score']
