@@ -26,13 +26,14 @@ min_lng = 126.0
 
 #위도 경도 불러오기
 i=0
-for place in df_list["Addr"]:
+for place in df_list["Addr2"]:
     try:
         print(i)
         i+=1
         tmp_loc = gmaps.geocode(place)[0].get('geometry')
         tmp_lat = tmp_loc["location"]["lat"]
         tmp_lng = tmp_loc["location"]["lng"]
+        print(tmp_lat,tmp_lng)
         
         if(tmp_lat>max_lat or tmp_lat<min_lat or tmp_lng>max_lng or tmp_lng<min_lng):
             place_lat.append("0")
@@ -52,13 +53,13 @@ print("위경도 추가 완료")
 
 #최종파일에 위도경도 추가
 df_list2 = pd.DataFrame(place_lat)
-df_list2 = df_list2.rename(columns={0:"lat"})
+df_list2 = df_list2.rename(columns={0:"Latitude"})
 df_list3 = pd.DataFrame(place_lng)
-df_list3 = df_list3.rename(columns={0:"lng"})
+df_list3 = df_list3.rename(columns={0:"Longtitude"})
 
 df = pd.concat([df_list,df_list2,df_list3], axis=1)
 
 #csv파일로 출력
-df = df.query("lat != '0'")
-df.to_csv('/Users/yu/Desktop/oss_project-master/no1_data_'+"location.csv",encoding="utf-8-sig")
+df = df.query("Latitude != '0'")
+df.to_csv("no1.csv",encoding="utf-8-sig")
 df.tail()

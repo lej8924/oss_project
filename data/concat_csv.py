@@ -28,7 +28,7 @@ for i, type in enumerate(df):
             classify.append(count)
             break
         count += 1
-        
+
     if count == 6:
         classify.append(0)
 classify = pd.DataFrame(classify)
@@ -36,13 +36,14 @@ classify.columns=['Typenum']
 
 #지역을 대문자 알파벳으로 추가
 df2 = data1['Addr2']
-locations = ['공릉동','월계동','상계동','중계동','하계동']
+locations = ['공릉','월계','상계','중계','하계']
 locationclass = ['A','B','C','D','E']
 dong = []
 for addr in df2:
     for i,location in enumerate(locations):
-        if addr == location:
-            dong.append[locationclass[i]]
+        if addr[:2] == location:
+            dong.append(locationclass[i])
+            break
 
 dong = pd.DataFrame(dong)
 dong.columns=['Dong']  
