@@ -38,10 +38,10 @@ time.sleep(2) #로딩시간 2초대기
 
 #장소 버튼 클릭
 driver.find_element_by_xpath('//*[@id="info.main.options"]/li[2]/a').send_keys(Keys.ENTER)
-time.sleep(1)
+time.sleep(2)
 
 def storeNamePrint():
-    time.sleep(0.2)
+    time.sleep(0.5)
     
     html = driver.page_source
     soup = BeautifulSoup(html,'html.parser')
@@ -67,6 +67,7 @@ def storeNamePrint():
         star_num = star_num[:star_num_size-1]        
         star_num = int(re.sub(",","",star_num))
 
+        #도로명주소와 지번 구분
         addr = addr.replace('\n','').split('(지번) ')
         
         
@@ -77,8 +78,12 @@ def storeNamePrint():
         temp.append(star_num)
         temp.append(review)
         temp.append(link)
-        temp.append(addr[0])
-        temp.append(addr[1])
+        if len(addr) == 2:
+            temp.append(addr[0])
+            temp.append(addr[1])
+        else: #도로명주소가 없는 경우 대비.
+            temp.append(0)
+            temp.append(addr[0][7:])#시,구 빼고 동부터 추가
         temp.append(Typename)
         
         list.append(temp)
@@ -107,7 +112,7 @@ for i in range(0,10):
         
         if(page2)%5==0:
             driver.find_element_by_xpath('//*[@id="info.search.page.next"]').send_keys(Keys.ENTER)
-            time.sleep(2)
+            time.sleep(1)
             
             page2 = 0
         page += 1
