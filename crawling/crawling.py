@@ -66,6 +66,8 @@ def storeNamePrint():
         star_num_size = len(star_num)
         star_num = star_num[:star_num_size-1]        
         star_num = int(re.sub(",","",star_num))
+
+        addr = addr.replace('\n','').split('(지번) ')
         
         
         print(cafe_name,star,star_num,review,link,addr,Typename)
@@ -75,14 +77,15 @@ def storeNamePrint():
         temp.append(star_num)
         temp.append(review)
         temp.append(link)
-        temp.append(addr)
+        temp.append(addr[0])
+        temp.append(addr[1])
         temp.append(Typename)
         
         list.append(temp)
         
     f = open(filename + '.csv',"w",encoding="utf-8-sig",newline="")
     writercsv = csv.writer(f)
-    header = ['Name','Score','Numberofscore','Review','Link','Addr','Typename']
+    header = ['Name','Score','Numberofscore','Review','Link','Addr1','Addr2','Typename']
     writercsv.writerow(header)
     
     for i in list:
