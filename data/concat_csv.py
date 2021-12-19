@@ -1,8 +1,6 @@
 from os import read
-
 from pandas.core.reshape.concat import concat
 import pandas as pd
-import webdriver_manager
 
 #파일 불러오고 첫째 열 제거
 data1 = pd.read_csv('data/no1.csv')
