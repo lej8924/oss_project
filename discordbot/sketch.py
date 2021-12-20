@@ -67,12 +67,12 @@ async def selectboxTesting(ctx):
                         label="아님 새로운 음식 도전!!",
                         value='3',
                         description = "난 딴 거 필요없이 새로운 곳 갈래!",
-                        emoji="😄"),
+                        emoji="🤗"),
                         SelectOption(
                         label="바로 추천 해줘!!",
                         value='4',
                         description = "우리 지금 만나! 당장 만나!",
-                        emoji="😄")
+                        emoji="😉")
                         ]
                     )
                 ]
