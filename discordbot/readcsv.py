@@ -2,7 +2,7 @@ import csv
 
 def readdata():
     no1data = []
-    with open('no1won_data_location.csv','r') as no1:
+    with open('discordbot/final.csv','r') as no1:
         csvreader = csv.reader(no1)
 
         for line in csvreader:
