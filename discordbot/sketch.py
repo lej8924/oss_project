@@ -4,16 +4,31 @@ from discord.embeds import Embed
 from discord.ext import commands
 from discord_buttons_plugin import *
 from discord_components import *
-import readcsv
+import random
 import pandas as pd
 
 bot = commands.Bot(command_prefix='!', description = "I'm Bot!!")
 bot = ComponentsBot('!')
 buttons = ButtonsClient(bot)
 
-data = pd.DataFrame(readcsv.readdata())
+data = pd.read_csv('discordbot/final.csv')
+data = data.drop('Unnamed: 0',axis=1)
 
-userdata = [False, False, False]
+userdata = [None, None, 1]
+def finddata(temp):
+        i = random.randint(0,len(temp))
+        name = str(temp['Name'][i:i+1].values[0])
+        url1 = str(temp['Link'][i:i+1].values[0])
+        score = float(temp['Score'][i:i+1].values[0])
+        num = int(temp['Numberofscore'][i:i+1].values[0])
+        review = int(temp['Review'][i:i+1].values[0])
+
+        embed = Embed(title = name,description = "",url = url1,color = 0xFF0000)
+        embed.add_field(name = '별점',value = score)
+        embed.add_field(name = '별점수',value = num)
+        embed.add_field(name = '블로그리뷰수',value = review)
+
+        return embed
 
 @bot.event
 async def on_ready():
@@ -114,6 +129,7 @@ async def sangye(ctx):
 @buttons.click
 async def jungye(ctx):
     userdata[0] = 'D'
+    print(userdata)
     await ctx.reply("중계동 맛집을 찾아드리겠습니다")
     
 @buttons.click
@@ -165,6 +181,7 @@ async def chi(ctx):
 @buttons.click
 async def jap(ctx):
     userdata[1] = 2
+    print(userdata)
     await ctx.reply("일식 맛집을 찾아드릴게요")
     
 @buttons.click
@@ -210,36 +227,20 @@ async def nch(ctx):
 
 @bot.command()
 async def fin(ctx):
-    i=0
     print(userdata)
-    if (userdata[0]!= None) and (userdata[1] == None):
+    if userdata[1] == None:
         temp = data.loc[(data['Dong']== userdata[0]) & (data['Challenge']== userdata[2])]
-        print(temp)
-        embed1 = Embed(title = temp['Name'][i],description = "",url = temp['Link'][i],color = 0xFF0000)
-        embed1.add_field(name = '별점',value=temp['Score'][i])
-        embed1.add_field(name = '별점수',value=temp['Numberofscore'][i])
-        embed1.add_field(name = '블로그리뷰수',value=temp['Review'][i])
-        await ctx.send(embed = embed1)
+        embed = finddata(temp)
+        await ctx.send(embed = embed)
 
-    elif (userdata[0] == None) and (userdata != None):
+    if userdata[0] == None:
         temp = data.loc[(data['Typenum']==userdata[1]) & (data['Challenge']== userdata[2])]
-        print(temp)
-        embed2 = Embed(title = temp['Name'][i],description = "",url = temp['Link'][i],color = 0xFF0000)
-        embed2.add_field(name = '별점',value=temp['Score'][i])
-        embed2.add_field(name = '별점수',value=temp['Numberofscore'][i])
-        embed2.add_field(name = '블로그리뷰수',value=temp['Review'][i])
-        await ctx.send(embed = embed2)
+        embed = finddata(temp)
+        await ctx.send(embed = embed)
 
-    else:
+    if (userdata[0]!=None) and (userdata[1] !=None):
         temp = data.loc[(data['Dong']== userdata[0]) & (data['Typenum']==userdata[1]) & (data['Challenge']== userdata[2])]
-        print(temp)
-        embed3 = Embed(title = temp['Name'][i],description = "",url = temp['Link'][i],color = 0xFF0000)
-        embed3.add_field(name = '별점',value=temp['Score'][i])
-        embed3.add_field(name = '별점수',value=temp['Numberofscore'][i])
-        embed3.add_field(name = '블로그리뷰수',value=temp['Review'][i])
-        await ctx.send(embed = embed3)
+        embed = finddata(temp)
+        await ctx.send(embed = embed)
 
-
-
-
-bot.run('') #토큰
+bot.run('OTE1Mjk1NTE5MDEyNzE2NTQ1.YaZhYQ.KyWergE9I2hzEmB9JBOOdAzVgEA') #토큰
