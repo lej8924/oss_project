@@ -21,20 +21,29 @@ Discord Bot API를 이용하여 노원구 내 맛집🍲을 이용자의 니즈�
 ### 🖊️Prerequisites
 
   
-"requirement.txt"에 작성되어 있음
+- "requirement.txt"에 작성되어 있음
+- python이 설치되어 있다면 pip install -r requirement.txt 명령어를 통해 모든 라이브러리 설치 가능합니다.
 
   
 
 ```
-
-discord
+-discord
 asyncio
-discord_buttons_plugin
-discord.ext
-discord_components
-readcsv
-pandas
+discord
+discord-buttons-plugin
+discord-components
+requests
 
+-webcrawling
+selenium
+beautifulsoup4
+webdriver-manager
+googlemaps
+
+-data visualize and processing
+pandas
+numpy
+matplotlib
 ```
 
   
@@ -53,22 +62,17 @@ oss_project의 "master" branch에 있는 폴더에 대해 설명하는 부분입
   
 
 ```
-
-📝readcsv.py
-final.csv파일을 불러옴
-
 📝requirements.txt
-install이 필요한 패키지들을 설명
-
-📝run.py
-discord bot 사전 테스트 py파일
+heroku 연동시 heroku server에 install이 필요한 패키지둘
 
 📝runtime.txt
-필요 파이썬 버전
+heroku 연동시 heroku server에 필요한 파이썬 버전
 
-📝sketch.py
-최종 discord bot py파일
+📝Procfile
+heroku 연동시 heroku server에 어떤 파일을 main으로 실행시킬지 정하는 파일.
 
+📝run.py
+discord bot 최종파일, 필요한 token값은 Discord 공식 홈페이지의 개발자 항목에서 발급가능.
 ```
 
   
@@ -78,31 +82,33 @@ discord bot 사전 테스트 py파일
   
 
 ```
-
 📝algo.py
 맛집으로 분류할 가중치 알고리즘 파일
 
 📝concat_csv.py
 한식,일식,양식,카페,기타(인도/태국 등)으로 식당의 업종 및 지역을 분류하는 파일
 
+📝gong2.csv, ha2.csv, joong2.csv, no1.sang2.csv, wol2.csv
+crawiling 폴더의 crawling.py를 실행시켜 카카오맵을 이용해 노원구의 각 동의 음식점 정보를 크롤링한 파일들입니다.
+
+📝no1.csv
+crawling 폴더의 mapping.py를 통해 각 동의 파일들을 합친뒤 위도와 경도를 추가한 파일입니다.
+
+📝nowon.csv
+concat_csv.py 파일을 통해 음식점을 업종,지역에 따라 분류하여 미리 지정해둔 값을 추가한 파일입니다.
+
 📝final.csv
-디스코드 봇에 쓰일 최종 csv파일
-
-📝gong2.csv,ha2.csv,joong2.csv,no1.sang2.csv,wol2.csv
-각 동마다 추출해낸 식당 리스트 csv파일
-
-📝no1.csv,nowon.csv
-final.csv로 가기 전단계 csv파일들
+algo.py파일을 통해 만들어진 디스코드 봇에 쓰는 최종 csv파일
 
 📝readme.md
 data폴더에 대한 간단한 설명
 ```
+
 **📁folder3. crawling**
 
   
 
 ```
-
 📝crawling.py
 chromedriver로 카카오맵을 활성화하여
 'Name','Score','Numberofscore','Review','Link','Addr1','Addr2','Typename'컬럼을 뽑아내옴.csv파일 형태로 저장함.
@@ -121,7 +127,7 @@ chromedriver로 카카오맵을 활성화하여
 crawling csv파일 예시
 
 |   | Name | Score | Numberofscore | Review | Link | Addr1 | Addr2 | Typename | Latitude | Longtitude | Typenum | Dong | Challenge | Totalscore |
-|---|------|-------|---------------|--------|------|-------|-------|----------|----------|------------|---------|------|-----------|------------|
+|---|--------|-------|---------------|--------|------|-------|-------|----------|----------|------------|---------|------|-----------|------------|
 |   | 식당이름 | 식당평점 |  평가갯수  |  리뷰갯수  | 식당링크 | 도로명주소 |    지번주소   |  음식종류| 위도  |  경도   |  음식종류 정수화  | --동 정수화 |  도전여부         | 알고리즘 결과|
 
   
@@ -129,16 +135,16 @@ crawling csv파일 예시
 
   
 
-✨저희의 *노원구 맛집 찾기 Discord Bot*을 소개합니다✨
+✨저희의 노원구 맛집 찾기 Discord Bot: *Mumuglang_No.1*을 소개합니다✨
 
   
 
-### 📌"sketch"파일 실행
+### 📌"run"파일 실행
 
   
 
 실행하는 사진 첨부(python파일)
-
+![실행이미지]()
   
 
   

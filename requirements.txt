@@ -1,5 +1,8 @@
 asyncio
 discord
+discord-buttons-plugin
+discord-components
+requests
 
 selenium
 beautifulsoup4
@@ -9,8 +12,3 @@ googlemaps
 pandas
 numpy
 matplotlib
-
-
-
-
-
