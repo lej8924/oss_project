@@ -165,4 +165,4 @@ async def 버튼(ctx):
 
 ####버튼 끝#####
      
-bot.run('OTE3Mjc0MzYyODUwMTkzNDM4.Ya2UUg.g0sehHkXfEUO71k9EZWSrnxJ370') #토큰
+bot.run('') #토큰
