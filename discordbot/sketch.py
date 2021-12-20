@@ -22,11 +22,19 @@ def finddata(temp):
         score = float(temp['Score'][i:i+1].values[0])
         num = int(temp['Numberofscore'][i:i+1].values[0])
         review = int(temp['Review'][i:i+1].values[0])
+        addr = str(temp['Addr1'][i:i+1].values[0])
+        typenum = int(temp['Typenum'][i:i+1].values[0])
+        type = str(temp['Typename'][i:i+1].values[0])
+        emo = [['🍴','🍚','🥘','🦪','🍗'],['🥢','🥣','🍲','🍜'],['🍣','🍱','🍤','🍙','🍥'],['🍔','🍕','🥙','🌮','🥞','🍦','🍝','🥫','🍽'],['☕️','🫖','🍰','🍮','🍩','🍪']]
 
-        embed = Embed(title = name,description = "",url = url1,color = 0xFF0000)
-        embed.add_field(name = '별점',value = score)
-        embed.add_field(name = '별점수',value = num)
-        embed.add_field(name = '블로그리뷰수',value = review)
+        embed = Embed(title = name, url = url1, color = 0x9ec27e)
+        embed.add_field(name = type, value = "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ", inline= False)
+        embed.add_field(name = '별점', value = score)
+        embed.add_field(name = '별점수', value = num)
+        embed.add_field(name = '블로그리뷰수', value = review)
+        embed.add_field(name = '주소', value = addr, inline= False)
+        embed.set_author(name=f"추천결과{random.choice(emo[typenum])}")
+        embed.set_footer(text="음식점명을 클릭하면 카카오맵으로 이동합니다.")
 
         return embed
 
@@ -69,10 +77,10 @@ async def selectboxTesting(ctx):
                     )
                 ]
             )
-    e1 = discord.Embed(title="!location", description="찾고싶은 지역이 있다면\n이 키워드를 채팅에 적어보세요!!", color=0xc63c1c)
-    e2 = discord.Embed(title="!type", description="먹고싶은 음식이 있다면\n이 키워드를 채팅에 적어보세요!!", color=0xc63c1c)
-    e3 = discord.Embed(title="!challenge", description="모험을 좋아한다면\n이 키워드를 채팅에 적어보세요!!", color=0xc63c1c)
-    e4 = discord.Embed(title="!find",description = "아무렴 어때!\n이 키워드를 입력하고 빨리 추천받으세요!!",color=0xc63c1c)
+    e1 = discord.Embed(title="!location", description="찾고싶은 지역이 있다면\n이 키워드를 채팅에 적어보세요!!", color=0x8865a0)
+    e2 = discord.Embed(title="!type", description="먹고싶은 음식이 있다면\n이 키워드를 채팅에 적어보세요!!", color=0x6f68a4)
+    e3 = discord.Embed(title="!challenge", description="모험을 좋아한다면\n이 키워드를 채팅에 적어보세요!!", color=0xa47eb6)
+    e4 = discord.Embed(title="!find",description = "아무렴 어때!\n이 키워드를 입력하고 빨리 추천받으세요!!",color=0xb976a8)
 
     while True:
         event = await bot.wait_for("select_option", check=None)
@@ -258,4 +266,4 @@ async def find(ctx):
         embed = finddata(temp)
         await ctx.send(embed = embed)
 
-bot.run('OTE1Mjk1NTE5MDEyNzE2NTQ1.YaZhYQ.XwZtSU4r4vkEB2SlHTxIgGehN98') #토큰
+bot.run('') #토큰
