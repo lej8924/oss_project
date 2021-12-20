@@ -1,2 +1,7 @@
 discord
 asyncio
+discord_buttons_plugin
+discord.ext
+discord_components
+readcsv
+pandas
