@@ -144,23 +144,12 @@ crawling csv파일 예시
   
 
 실행하는 사진 첨부(python파일)
-![실행이미지]()
-  
-
-  
-
-### 📌heroku에서 작동
-
- 
- 실행하는 사진 첨부(heroku내에서)
-
-  
-
-```
-
-이거는 공릉동에서 한식을 먹고싶은 도전하고 싶지 않은 홍길동씨를 가정하고 봇이랑 대화하는거 첨부
-
-```
+![실행이미지1](https://github.com/lej8924/oss_project/blob/master/image/1.png)
+![실행이미지2](https://github.com/lej8924/oss_project/blob/master/image/2.png)
+![실행이미지3](https://github.com/lej8924/oss_project/blob/master/image/3.png)
+![실행이미지4](https://github.com/lej8924/oss_project/blob/master/image/4.png)
+![실행이미지5](https://github.com/lej8924/oss_project/blob/master/image/5.png)
+![실행이미지6](https://github.com/lej8924/oss_project/blob/master/image/6.png)
 
   
 
