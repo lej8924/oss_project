@@ -4,9 +4,9 @@
   
 
 <img src="https://beebom.com/wp-content/uploads/2018/02/discord-bots.jpg?w=750&quality=75" width="300">
+<img alt = "노원구상징" src="https://github.com/lej8924/oss_project/blob/master/image/7.jpg" width="300">
 
 Discord Bot API를 이용하여 노원구 내 맛집🍲을 이용자의 니즈에 따라 추천해주는 봇을 개발함.
-![노원구상징](https://github.com/lej8924/oss_project/blob/master/image/7.jpg)
 
   
 
