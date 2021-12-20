@@ -141,9 +141,7 @@ crawling csv파일 예시
 
 ### 📌"run"파일 실행
 
-  
 
-실행하는 사진 첨부(python파일)
 ![실행이미지1](https://github.com/lej8924/oss_project/blob/master/image/1.png)
 ![실행이미지2](https://github.com/lej8924/oss_project/blob/master/image/2.png)
 ![실행이미지3](https://github.com/lej8924/oss_project/blob/master/image/3.png)
