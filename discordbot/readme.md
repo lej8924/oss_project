@@ -83,6 +83,9 @@ discord bot 최종파일, 필요한 token값은 Discord 공식 홈페이지의 �
   
 
 ```
+📝plot.py
+final.csv 파일을 matplotlib를 통해 3차원으로 시각화하는 파일.
+
 📝algo.py
 맛집으로 분류할 가중치 알고리즘 파일
 
