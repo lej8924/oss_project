@@ -178,7 +178,8 @@ https://discord.com/api/oauth2/authorize?client_id=915295519012716545&permission
 *  [디스코드 봇 만들기#12 - 서버 호스팅 :: 작업일지](https://lektion-von-erfolglosigkeit.tistory.com/97?category=955777) - discord bot heroku 연동 참고
 
 * [Python Project : 맛집 지도 시각화 ](https://nostalgiaa.tistory.com/36)-카카오맵 웹크롤링 참고
-  
+
+*  [googlemaps api python 사용법](https://velog.io/@hoyaho/PythonGoogle-Maps-API를-Python으로-사용해보았다) - mapping.py 파일 작성시 참고
 
 
 ## Developers🖥️
